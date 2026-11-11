@@ -1,16 +1,16 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { AmbioraEvent } from "@/data/events";
+import { AmbioraEvent, AMBIORA_EVENTS } from "@/data/events";
 
 interface EventDetailPlaceholderProps {
   event: AmbioraEvent;
 }
 
 export default function EventDetailPlaceholder({ event }: EventDetailPlaceholderProps) {
+  const otherEvents = AMBIORA_EVENTS.filter((e) => e.id !== event.id);
+
   return (
     <>
       <Navbar />
@@ -111,6 +111,38 @@ export default function EventDetailPlaceholder({ event }: EventDetailPlaceholder
           >
             All Events Directory
           </Link>
+        </div>
+
+        {/* Explore Other Orbital Challenges Grid */}
+        <div className="mt-16 pt-12 border-t border-white/[0.08]">
+          <h3 className="text-xs tracking-[0.25em] text-text-muted uppercase mb-6 font-semibold">
+            Explore Other Orbital Challenges
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {otherEvents.map((other) => (
+              <Link
+                key={other.id}
+                href={other.route}
+                className="group block p-4 rounded-xl border border-white/[0.06] bg-[#111111]/60 hover:bg-[#141414] hover:border-white/20 transition-all duration-300"
+              >
+                <div className="relative w-full h-24 rounded-lg overflow-hidden mb-3 border border-white/[0.04] bg-[#141414]">
+                  <Image
+                    src={other.image}
+                    alt={other.imageAlt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <p className="text-[9px] tracking-[0.2em] text-text-muted uppercase mb-1">
+                  {other.category}
+                </p>
+                <p className="text-xs sm:text-sm font-semibold text-text-primary group-hover:text-white transition-colors truncate">
+                  {other.name}
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </main>
       <Footer />
