@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -31,11 +30,7 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  const [year, setYear] = useState("2026");
-
-  useEffect(() => {
-    setYear(new Date().getFullYear().toString());
-  }, []);
+  const year = "2026";
 
   return (
     <footer className="relative border-t border-white/[0.06]">
@@ -46,17 +41,17 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-5">
               <div className="relative w-7 h-7">
                 <Image
-                  src="/images/ambiora-logo.png"
+                  src="/images/ambiora-logo-transparent.png"
                   alt="AMBIORA"
                   fill
                   className="object-contain"
                 />
               </div>
-              <span className="text-xs font-medium tracking-[0.2em] text-text-primary/80">
+              <span className="text-xs font-semibold tracking-[0.22em] text-text-primary/90">
                 AMBIORA
               </span>
             </Link>
-            <p className="text-xs text-text-muted leading-relaxed max-w-xs">
+            <p className="text-xs text-text-muted leading-relaxed max-w-sm">
               The annual technology festival at NMIMS Shirpur Campus.
             </p>
           </div>

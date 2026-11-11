@@ -56,28 +56,28 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-8 h-8 md:w-9 md:h-9">
                 <Image
-                  src="/images/ambiora-logo.png"
+                  src="/images/ambiora-logo-transparent.png"
                   alt="AMBIORA"
                   fill
                   className="object-contain brightness-100 group-hover:brightness-125 transition-all duration-300"
                   priority
                 />
               </div>
-              <span className="text-sm font-medium tracking-[0.2em] text-text-primary/90 group-hover:text-text-primary transition-colors duration-300">
+              <span className="text-sm font-semibold tracking-[0.22em] text-text-primary/90 group-hover:text-text-primary transition-colors duration-300">
                 AMBIORA
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-1.5 lg:gap-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative px-4 py-2 text-[13px] tracking-[0.05em] text-text-secondary hover:text-text-primary transition-colors duration-300 group"
+                  className="relative px-3.5 py-2 text-[13px] tracking-[0.03em] font-medium text-text-secondary hover:text-text-primary transition-colors duration-300 group whitespace-nowrap"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-white/40 group-hover:w-6 transition-all duration-300" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-white/60 group-hover:w-5 transition-all duration-300" />
                 </Link>
               ))}
             </div>
