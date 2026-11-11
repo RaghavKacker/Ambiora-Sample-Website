@@ -21,10 +21,10 @@ const flagshipEvents = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "X / Twitter", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "#" },
+  { label: "Instagram", href: "https://instagram.com" },
+  { label: "X / Twitter", href: "https://x.com" },
+  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "GitHub", href: "https://github.com" },
 ];
 
 export default function Footer() {
@@ -114,6 +114,8 @@ export default function Footer() {
                 <li key={s.label}>
                   <a
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-xs text-text-secondary hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5"
                   >
                     <span>{s.label}</span>

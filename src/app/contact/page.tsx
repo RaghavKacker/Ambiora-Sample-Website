@@ -37,10 +37,10 @@ const committeeTeams = [
 ];
 
 const socialChannels = [
-  { name: "Instagram", handle: "@ambiora.nmims", href: "#", desc: "Live festival updates, BTS & announcements" },
-  { name: "X (Twitter)", handle: "@AmbioraFest", href: "#", desc: "Real-time arena scores and engineering highlights" },
-  { name: "LinkedIn", handle: "AMBIORA Techfest", href: "#", desc: "Corporate alliances, speaker series & network" },
-  { name: "GitHub", handle: "github.com/ambiora", href: "#", desc: "Competition starter repositories and sandboxes" },
+  { name: "Instagram", handle: "@ambiora.nmims", href: "https://instagram.com", desc: "Live festival updates, BTS & announcements" },
+  { name: "X (Twitter)", handle: "@AmbioraFest", href: "https://x.com", desc: "Real-time arena scores and engineering highlights" },
+  { name: "LinkedIn", handle: "AMBIORA Techfest", href: "https://linkedin.com", desc: "Corporate alliances, speaker series & network" },
+  { name: "GitHub", handle: "github.com/ambiora", href: "https://github.com", desc: "Competition starter repositories and sandboxes" },
 ];
 
 export default function ContactPage() {
@@ -166,6 +166,8 @@ export default function ContactPage() {
               <a
                 key={soc.name}
                 href={soc.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group p-6 rounded-2xl border border-white/[0.08] bg-[#111111]/80 hover:border-white/25 hover:bg-[#151515] transition-all duration-300 block"
               >
                 <div className="flex items-center justify-between mb-3">
