@@ -6,6 +6,9 @@ export interface AmbioraEvent {
   tagline: string;
   description: string;
   route: string;
+  image: string;
+  imageAlt: string;
+  imageSource: string;
   datePlaceholder: string;
   teamSizePlaceholder: string;
   orbit: {
@@ -28,6 +31,9 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     description:
       "A high-stakes multi-stage software engineering relay. Teams exchange modular codebases under strict constraints, testing design continuity and agile execution.",
     route: "/events/handoff",
+    image: "/events/handoff.jpg",
+    imageAlt: "Software engineers collaborating across multiple display screens in an engineering marathon",
+    imageSource: "Unsplash - Annie Spratt (Collaborative coding environment)",
     datePlaceholder: "Day 1 · 10:00 AM",
     teamSizePlaceholder: "Team of 3-4",
     orbit: {
@@ -48,6 +54,9 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     description:
       "Navigate simulated global financial markets using algorithmic strategies, quantitative analysis, and real-time risk management against extreme market volatility.",
     route: "/events/trade-rush",
+    image: "/events/trade-rush.jpg",
+    imageAlt: "Live financial market trading charts and candlestick quantitative technical indicators",
+    imageSource: "Unsplash - Maxim Hopman (Financial markets & algorithmic trading)",
     datePlaceholder: "Day 1 · 02:00 PM",
     teamSizePlaceholder: "Individual / Duo",
     orbit: {
@@ -68,6 +77,9 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     description:
       "An intense obstacle navigation and autonomous flight arena. Pilot custom-engineered UAVs through complex geometric courses engineered to test precision aerodynamics.",
     route: "/events/drone-o-mania",
+    image: "/events/drone-o-mania.jpg",
+    imageAlt: "FPV racing drone hovering in high-precision aerobatic flight arena",
+    imageSource: "Unsplash - Diana Măceşanu (Aerobatic racing quadcopter)",
     datePlaceholder: "Day 2 · 11:00 AM",
     teamSizePlaceholder: "Team of 2-3",
     orbit: {
@@ -88,6 +100,9 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     description:
       "A strategic generative AI showdown. Competitors formulate hyper-calibrated system prompts to synthesize complex outputs, bypass adversarial heuristics, and solve arcane challenges.",
     route: "/events/prompt-wars",
+    image: "/events/prompt-wars.jpg",
+    imageAlt: "Abstract generative 3D visualization representing deep neural network latent space",
+    imageSource: "Unsplash - Milad Fakurian (Generative AI 3D abstraction)",
     datePlaceholder: "Day 2 · 03:00 PM",
     teamSizePlaceholder: "Individual",
     orbit: {
@@ -108,6 +123,9 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     description:
       "A dark investigative forensic gauntlet. Reconstruct redacted memory dumps, dissect malicious binaries, and decode encrypted transmission logs to resolve a multi-layered cyber incident.",
     route: "/events/case-exe",
+    image: "/events/case-exe.jpg",
+    imageAlt: "Digital forensics evidence terminal displaying cryptographic code stream and dark investigation environment",
+    imageSource: "Unsplash - Clint Patterson (Cyber forensics & threat investigation)",
     datePlaceholder: "Day 3 · 01:00 PM",
     teamSizePlaceholder: "Team of 2-4",
     orbit: {

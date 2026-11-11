@@ -1,35 +1,16 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-
-const placeholderEvents = [
-  {
-    id: 1,
-    title: "Event Title One",
-    category: "COMPETITION",
-    description:
-      "A placeholder description for the first featured event. Details will be provided closer to the festival.",
-  },
-  {
-    id: 2,
-    title: "Event Title Two",
-    category: "WORKSHOP",
-    description:
-      "A placeholder description for the second featured event. Details will be provided closer to the festival.",
-  },
-  {
-    id: 3,
-    title: "Event Title Three",
-    category: "TALK",
-    description:
-      "A placeholder description for the third featured event. Details will be provided closer to the festival.",
-  },
-];
+import { AMBIORA_EVENTS } from "@/data/events";
 
 export default function FeaturedEvents() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
+
+  const featured = AMBIORA_EVENTS.slice(0, 3);
 
   return (
     <section className="relative py-32 md:py-40">
@@ -47,7 +28,7 @@ export default function FeaturedEvents() {
               delay: 0.1,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-[10px] md:text-xs tracking-[0.35em] text-text-muted uppercase mb-6"
+            className="text-[10px] md:text-xs tracking-[0.3em] text-text-muted uppercase mb-4"
           >
             Featured Events
           </motion.p>
@@ -60,7 +41,7 @@ export default function FeaturedEvents() {
               delay: 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-text-primary"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-normal text-text-primary"
           >
             Explore what awaits.
           </motion.h2>
@@ -68,44 +49,55 @@ export default function FeaturedEvents() {
 
         {/* Event cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {placeholderEvents.map((event, index) => (
+          {featured.map((event, index) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 duration: 0.7,
-                delay: 0.3 + index * 0.15,
+                delay: 0.3 + index * 0.12,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="group relative"
             >
-              <div className="relative bg-bg-secondary rounded-2xl border border-white/[0.06] p-8 md:p-10 transition-all duration-500 hover:border-white/[0.12] hover:bg-[#141414]">
+              <Link
+                href={event.route}
+                className="block relative bg-bg-secondary rounded-2xl border border-white/[0.08] p-6 sm:p-7 md:p-8 transition-all duration-500 hover:border-white/[0.2] hover:bg-[#151515]"
+              >
                 {/* Category badge */}
-                <p className="text-[10px] tracking-[0.3em] text-text-muted uppercase mb-6">
+                <p className="text-[10px] tracking-[0.25em] text-text-muted uppercase mb-4">
                   {event.category}
                 </p>
 
-                {/* Placeholder visual */}
-                <div className="w-full h-32 md:h-36 rounded-lg bg-[#1a1a1a] border border-white/[0.04] mb-8 flex items-center justify-center">
-                  <div className="w-8 h-8 rounded-full border border-white/[0.08]" />
+                {/* Real High-Quality Sample Image */}
+                <div className="relative w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-6 border border-white/[0.06] bg-[#141414]">
+                  <Image
+                    src={event.image}
+                    alt={event.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  {/* Subtle dark vignette overlay for Apple-inspired depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/80 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* Event title */}
-                <h3 className="text-lg md:text-xl font-medium text-text-primary tracking-tight mb-3 group-hover:text-white transition-colors duration-300">
-                  {event.title}
+                <h3 className="text-lg md:text-xl font-semibold text-text-primary tracking-normal mb-2.5 group-hover:text-white transition-colors duration-300">
+                  {event.name}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
+                <p className="text-xs md:text-sm text-text-secondary leading-relaxed line-clamp-3 mb-6">
                   {event.description}
                 </p>
 
                 {/* Learn more link */}
-                <div className="mt-6 flex items-center gap-2 text-xs text-text-muted group-hover:text-text-secondary transition-colors duration-300">
-                  <span className="tracking-wide">Learn more</span>
+                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-text-muted group-hover:text-text-primary transition-colors duration-300">
+                  <span className="tracking-wide font-medium">Explore briefing</span>
                   <svg
-                    className="w-3 h-3 transform group-hover:translate-x-1 transition-transform duration-300"
+                    className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -118,7 +110,7 @@ export default function FeaturedEvents() {
                     />
                   </svg>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -126,4 +118,3 @@ export default function FeaturedEvents() {
     </section>
   );
 }
-

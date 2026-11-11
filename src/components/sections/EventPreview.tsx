@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { AmbioraEvent } from "@/data/events";
 
@@ -26,10 +27,10 @@ export default function EventPreview({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="relative p-5 md:p-6 rounded-2xl border border-white/[0.12] bg-[#111111]/85 backdrop-blur-xl shadow-2xl"
+            className="relative p-5 md:p-6 rounded-2xl border border-white/[0.12] bg-[#111111]/90 backdrop-blur-xl shadow-2xl"
           >
-            {/* Top row with Category and Close (Deselect) Button */}
-            <div className="flex items-center justify-between mb-2">
+            {/* Top row with Category and Close Button */}
+            <div className="flex items-center justify-between mb-3">
               <span className="text-[10px] tracking-[0.25em] text-text-muted uppercase">
                 {activeEvent.category} · {activeEvent.datePlaceholder}
               </span>
@@ -47,15 +48,30 @@ export default function EventPreview({
               </button>
             </div>
 
-            {/* Event Name */}
-            <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-text-primary mb-1">
-              {activeEvent.name}
-            </h3>
+            <div className="flex items-start gap-4">
+              {/* Event Thumbnail */}
+              <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 border border-white/10 hidden sm:block bg-[#141414]">
+                <Image
+                  src={activeEvent.image}
+                  alt={activeEvent.imageAlt}
+                  fill
+                  sizes="80px"
+                  className="object-cover"
+                />
+              </div>
 
-            {/* Description */}
-            <p className="text-xs md:text-sm text-text-secondary leading-relaxed mb-4">
-              {activeEvent.description}
-            </p>
+              <div className="flex-1 min-w-0">
+                {/* Event Name */}
+                <h3 className="text-xl md:text-2xl font-semibold tracking-normal text-text-primary mb-1">
+                  {activeEvent.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs md:text-sm text-text-secondary leading-relaxed line-clamp-2 mb-4">
+                  {activeEvent.description}
+                </p>
+              </div>
+            </div>
 
             {/* Action Row */}
             <div className="flex items-center justify-between pt-3 border-t border-white/[0.06]">
@@ -65,7 +81,7 @@ export default function EventPreview({
               <button
                 onClick={() => onSelect(activeEvent.id)}
                 disabled={isNavigating}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium tracking-wider uppercase bg-white text-black hover:bg-neutral-200 transition-all duration-300 active:scale-95 disabled:opacity-50"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-white text-black hover:bg-neutral-200 transition-all duration-300 active:scale-95 disabled:opacity-50"
               >
                 {isNavigating ? "Entering..." : "Explore Event"}
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -81,12 +97,12 @@ export default function EventPreview({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center justify-center py-4"
+            className="flex items-center justify-center py-4 px-2"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.06] bg-white/[0.02]">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-ping" />
-              <span className="text-[11px] tracking-[0.2em] text-text-muted uppercase">
-                Hover or tap an orbiting event to inspect
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/[0.06] bg-white/[0.02] max-w-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-ping shrink-0" />
+              <span className="text-[10px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.18em] text-text-muted uppercase text-center truncate">
+                Tap or hover an event to inspect
               </span>
             </div>
           </motion.div>
