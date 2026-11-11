@@ -87,7 +87,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 mt-3 text-xs sm:text-sm md:text-base text-text-secondary tracking-wide max-w-md text-center px-6"
+        className="relative z-10 mt-3 text-xs sm:text-sm md:text-base text-text-secondary tracking-wide max-w-xs sm:max-w-md text-center px-4 leading-relaxed"
       >
         A festival of technology, innovation and imagination.
       </motion.p>
@@ -97,7 +97,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, scale: 0.94 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1.2, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 w-full max-w-6xl h-[380px] sm:h-[460px] md:h-[520px] lg:h-[580px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="relative z-10 w-full max-w-6xl h-[340px] sm:h-[460px] md:h-[520px] lg:h-[580px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-hidden"
       >
         <AmbioraSphere
           hoveredEventId={hoveredEventId}
@@ -112,7 +112,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.65 }}
-        className="relative z-20 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto px-4 mt-1 mb-2"
+        className="relative z-20 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-full sm:max-w-2xl mx-auto px-3 mt-1 mb-2"
       >
         {AMBIORA_EVENTS.map((event) => {
           const isActive = (hoveredEventId || selectedEventId) === event.id;
@@ -128,7 +128,7 @@ export default function HeroSection() {
               }}
               onMouseEnter={() => setHoveredEventId(event.id)}
               onMouseLeave={() => setHoveredEventId(null)}
-              className={`px-3 py-1.5 rounded-full text-[10px] md:text-xs tracking-wider transition-all duration-300 border ${
+              className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] md:text-xs tracking-wider transition-all duration-300 border ${
                 isActive
                   ? "bg-white text-black border-white shadow-lg scale-105"
                   : "bg-[#111111]/80 text-text-secondary border-white/[0.08] hover:border-white/30 hover:text-text-primary"
