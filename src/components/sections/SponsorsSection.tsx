@@ -5,11 +5,11 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 
 const techPartners = [
-  { id: 1, name: "Google Cloud", category: "Infrastructure" },
-  { id: 2, name: "NVIDIA", category: "AI & Compute" },
-  { id: 3, name: "GitHub", category: "Dev Platform" },
-  { id: 4, name: "Intel Labs", category: "Robotics & Arch" },
-  { id: 5, name: "Vercel", category: "Edge Systems" },
+  { id: 1, name: "Cloud Infrastructure", category: "Core Compute" },
+  { id: 2, name: "Neural Stack", category: "Inference Lab" },
+  { id: 3, name: "Quant Terminal", category: "Market Simulator" },
+  { id: 4, name: "Aero Vector", category: "Robotics & Avionics" },
+  { id: 5, name: "Cyber Shield", category: "Forensic Sandbox" },
 ];
 
 export default function SponsorsSection() {
@@ -31,7 +31,7 @@ export default function SponsorsSection() {
               delay: 0.1,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-[10px] md:text-xs tracking-[0.25em] text-text-muted uppercase mb-4"
+            className="text-[10px] md:text-xs tracking-[0.25em] text-text-muted uppercase mb-4 font-medium"
           >
             Partnerships & Ecosystem
           </motion.p>
@@ -69,7 +69,7 @@ export default function SponsorsSection() {
               <span className="text-sm font-semibold tracking-wide text-text-primary mb-1">
                 {partner.name}
               </span>
-              <span className="text-[10px] tracking-wider text-text-muted uppercase">
+              <span className="text-[10px] tracking-wider text-text-muted uppercase font-mono">
                 {partner.category}
               </span>
             </div>
