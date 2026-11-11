@@ -75,10 +75,11 @@ export default function ContactForm() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                <label htmlFor="contact-name" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                   Your Full Name *
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -91,10 +92,11 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                <label htmlFor="contact-email" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                   Email Address *
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -108,10 +110,11 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+              <label htmlFor="contact-category" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                 Inquiry Topic / Domain *
               </label>
               <select
+                id="contact-category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#161616] text-sm text-text-primary focus:outline-none focus:border-white/40 transition-all cursor-pointer"
@@ -125,10 +128,11 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+              <label htmlFor="contact-message" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                 Message & Details *
               </label>
               <textarea
+                id="contact-message"
                 rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -192,3 +196,4 @@ export default function ContactForm() {
     </div>
   );
 }
+

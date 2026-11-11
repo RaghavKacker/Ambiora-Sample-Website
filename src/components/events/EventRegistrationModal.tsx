@@ -92,6 +92,9 @@ export default function EventRegistrationModal({
 
           {/* Modal Container */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="reg-modal-title"
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -118,7 +121,7 @@ export default function EventRegistrationModal({
                     <span>Frontend Prototype · Zero Live Backend</span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl font-semibold tracking-normal text-text-primary mb-1">
+                  <h2 id="reg-modal-title" className="text-2xl sm:text-3xl font-semibold tracking-normal text-text-primary mb-1">
                     Register for {event.name}
                   </h2>
                   <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
@@ -130,10 +133,11 @@ export default function EventRegistrationModal({
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Primary Participant Information */}
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                    <label htmlFor="reg-name" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                       Full Name *
                     </label>
                     <input
+                      id="reg-name"
                       type="text"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
@@ -147,10 +151,11 @@ export default function EventRegistrationModal({
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                      <label htmlFor="reg-email" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                         Institutional Email *
                       </label>
                       <input
+                        id="reg-email"
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -163,10 +168,11 @@ export default function EventRegistrationModal({
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                      <label htmlFor="reg-id" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                         Student ID / Roll No *
                       </label>
                       <input
+                        id="reg-id"
                         type="text"
                         value={studentId}
                         onChange={(e) => setStudentId(e.target.value)}
@@ -180,10 +186,11 @@ export default function EventRegistrationModal({
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                    <label htmlFor="reg-college" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                       College / University *
                     </label>
                     <input
+                      id="reg-college"
                       type="text"
                       value={institution}
                       onChange={(e) => setInstitution(e.target.value)}
@@ -208,10 +215,11 @@ export default function EventRegistrationModal({
                       </div>
 
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                        <label htmlFor="reg-team" className="block text-xs font-mono uppercase tracking-wider text-text-muted mb-1.5">
                           Official Team Name *
                         </label>
                         <input
+                          id="reg-team"
                           type="text"
                           value={teamName}
                           onChange={(e) => setTeamName(e.target.value)}
