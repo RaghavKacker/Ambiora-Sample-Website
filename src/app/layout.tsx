@@ -28,6 +28,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ambiora.nmims.edu"),
   title: "AMBIORA — Technology Festival | NMIMS Shirpur",
   description:
     "AMBIORA is the annual technology festival at NMIMS Shirpur Campus. A festival of technology, innovation and imagination.",
