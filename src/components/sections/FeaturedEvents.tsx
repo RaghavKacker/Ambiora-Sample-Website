@@ -28,7 +28,7 @@ export default function FeaturedEvents() {
               delay: 0.1,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-[10px] md:text-xs tracking-[0.3em] text-text-muted uppercase mb-4"
+            className="text-[10px] md:text-xs tracking-[0.3em] text-text-muted uppercase mb-4 font-medium"
           >
             Featured Events
           </motion.p>
@@ -113,6 +113,19 @@ export default function FeaturedEvents() {
               </Link>
             </motion.div>
           ))}
+        </div>
+
+        {/* Bottom CTA to Events Directory */}
+        <div className="mt-14 text-center">
+          <Link
+            href="/events"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-semibold tracking-wider uppercase border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 active:scale-95"
+          >
+            <span>Explore All 5 Flagship Arenas</span>
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

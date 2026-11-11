@@ -8,7 +8,7 @@ export default function FestivalIntroduction() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="relative py-32 md:py-40">
+    <section id="festival-intro" className="relative py-32 md:py-40">
       {/* Subtle top border */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 

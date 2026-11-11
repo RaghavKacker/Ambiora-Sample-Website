@@ -149,19 +149,23 @@ export default function HeroSection() {
       />
 
       {/* Scroll indicator */}
-      <motion.div
+      <motion.a
+        href="#festival-intro"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="relative z-10 mt-8 mb-2 flex flex-col items-center gap-2"
+        aria-label="Scroll to festival overview"
+        className="relative z-10 mt-8 mb-2 flex flex-col items-center gap-2 group cursor-pointer"
       >
-        <span className="text-[9px] tracking-[0.3em] text-text-muted uppercase">Scroll</span>
+        <span className="text-[9px] tracking-[0.3em] text-text-muted group-hover:text-text-secondary transition-colors uppercase">
+          Scroll
+        </span>
         <motion.div
           animate={{ y: [0, 5, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-6 bg-gradient-to-b from-transparent via-white/20 to-transparent"
+          className="w-px h-6 bg-gradient-to-b from-transparent via-white/30 to-transparent group-hover:via-white/70 transition-all"
         />
-      </motion.div>
+      </motion.a>
     </section>
   );
 }
