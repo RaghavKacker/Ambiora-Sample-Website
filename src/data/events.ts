@@ -1,8 +1,18 @@
+export type EventCategoryFilter =
+  | "All"
+  | "Technology"
+  | "Business"
+  | "Robotics"
+  | "Artificial Intelligence"
+  | "Mystery & Logic";
+
 export interface AmbioraEvent {
   id: string;
   name: string;
   slug: string;
   category: string;
+  filterCategory: "Technology" | "Business" | "Robotics" | "Artificial Intelligence" | "Mystery & Logic";
+  index: string;
   tagline: string;
   description: string;
   route: string;
@@ -11,6 +21,8 @@ export interface AmbioraEvent {
   imageSource: string;
   datePlaceholder: string;
   teamSizePlaceholder: string;
+  accentSnippet: string;
+  metrics: { label: string; value: string }[];
   orbit: {
     radius: number;
     speed: number;
@@ -27,6 +39,8 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     slug: "handoff",
     name: "HANDOFF",
     category: "RELAY ENGINEERING",
+    filterCategory: "Technology",
+    index: "01",
     tagline: "Synchronised architectural transition & code continuity",
     description:
       "A high-stakes multi-stage software engineering relay. Teams exchange modular codebases under strict constraints, testing design continuity and agile execution.",
@@ -36,6 +50,12 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     imageSource: "Unsplash - Annie Spratt (Collaborative coding environment)",
     datePlaceholder: "Day 1 · 10:00 AM",
     teamSizePlaceholder: "Team of 3-4",
+    accentSnippet: "relay://init --verify-architecture",
+    metrics: [
+      { label: "Continuity", value: "4 Stages" },
+      { label: "Architecture", value: "Modular" },
+      { label: "Constraints", value: "Strict Sandboxing" },
+    ],
     orbit: {
       radius: 2.25,
       speed: 0.24,
@@ -50,6 +70,8 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     slug: "trade-rush",
     name: "TRADE RUSH",
     category: "QUANT & SIMULATION",
+    filterCategory: "Business",
+    index: "02",
     tagline: "High-frequency algorithmic trading under volatile dynamics",
     description:
       "Navigate simulated global financial markets using algorithmic strategies, quantitative analysis, and real-time risk management against extreme market volatility.",
@@ -59,6 +81,12 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     imageSource: "Unsplash - Maxim Hopman (Financial markets & algorithmic trading)",
     datePlaceholder: "Day 1 · 02:00 PM",
     teamSizePlaceholder: "Individual / Duo",
+    accentSnippet: "quant://orderbook --depth-level 2",
+    metrics: [
+      { label: "Tick Resolution", value: "Microsecond" },
+      { label: "Execution Model", value: "Simulated Exchange" },
+      { label: "Dynamics", value: "Extreme Volatility" },
+    ],
     orbit: {
       radius: 2.8,
       speed: -0.19,
@@ -73,6 +101,8 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     slug: "drone-o-mania",
     name: "DRONE-O-MANIA",
     category: "AERIAL ROBOTICS",
+    filterCategory: "Robotics",
+    index: "03",
     tagline: "Precision flight, obstacle vectoring and autonomous navigation",
     description:
       "An intense obstacle navigation and autonomous flight arena. Pilot custom-engineered UAVs through complex geometric courses engineered to test precision aerodynamics.",
@@ -82,6 +112,12 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     imageSource: "Unsplash - Diana Măceşanu (Aerobatic racing quadcopter)",
     datePlaceholder: "Day 2 · 11:00 AM",
     teamSizePlaceholder: "Team of 2-3",
+    accentSnippet: "aero://vectoring --gyro-calibrated",
+    metrics: [
+      { label: "Telemetry", value: "3-Axis Vector" },
+      { label: "Course Arena", value: "Geometric Obstacles" },
+      { label: "Control Mode", value: "Manual & Auto" },
+    ],
     orbit: {
       radius: 3.4,
       speed: 0.16,
@@ -96,6 +132,8 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     slug: "prompt-wars",
     name: "PROMPT WARS",
     category: "GENERATIVE AI",
+    filterCategory: "Artificial Intelligence",
+    index: "04",
     tagline: "Cognitive boundary probing & generative synthesis",
     description:
       "A strategic generative AI showdown. Competitors formulate hyper-calibrated system prompts to synthesize complex outputs, bypass adversarial heuristics, and solve arcane challenges.",
@@ -105,6 +143,12 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     imageSource: "Unsplash - Milad Fakurian (Generative AI 3D abstraction)",
     datePlaceholder: "Day 2 · 03:00 PM",
     teamSizePlaceholder: "Individual",
+    accentSnippet: "neural://synthesize --bypass-filter",
+    metrics: [
+      { label: "Evaluation", value: "Adversarial Heuristic" },
+      { label: "Synthesis", value: "Multi-Modal" },
+      { label: "Latent Depth", value: "Unrestricted" },
+    ],
     orbit: {
       radius: 3.95,
       speed: -0.13,
@@ -119,6 +163,8 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     slug: "case-exe",
     name: "CASE.exe",
     category: "FORENSICS & REVERSING",
+    filterCategory: "Mystery & Logic",
+    index: "05",
     tagline: "Digital crime investigation & cryptographic reconstruction",
     description:
       "A dark investigative forensic gauntlet. Reconstruct redacted memory dumps, dissect malicious binaries, and decode encrypted transmission logs to resolve a multi-layered cyber incident.",
@@ -128,6 +174,12 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
     imageSource: "Unsplash - Clint Patterson (Cyber forensics & threat investigation)",
     datePlaceholder: "Day 3 · 01:00 PM",
     teamSizePlaceholder: "Team of 2-4",
+    accentSnippet: "forensic://docket --decrypt-payload",
+    metrics: [
+      { label: "Evidence Type", value: "Memory Dumps" },
+      { label: "Cryptanalysis", value: "Multi-Layered" },
+      { label: "Audit Protocol", value: "Forensic Chain" },
+    ],
     orbit: {
       radius: 4.55,
       speed: 0.1,
