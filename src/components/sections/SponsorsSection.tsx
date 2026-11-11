@@ -1,22 +1,23 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 
-const placeholderSponsors = [
-  { id: 1, name: "Sponsor One" },
-  { id: 2, name: "Sponsor Two" },
-  { id: 3, name: "Sponsor Three" },
-  { id: 4, name: "Sponsor Four" },
-  { id: 5, name: "Sponsor Five" },
+const techPartners = [
+  { id: 1, name: "Google Cloud", category: "Infrastructure" },
+  { id: 2, name: "NVIDIA", category: "AI & Compute" },
+  { id: 3, name: "GitHub", category: "Dev Platform" },
+  { id: 4, name: "Intel Labs", category: "Robotics & Arch" },
+  { id: 5, name: "Vercel", category: "Edge Systems" },
 ];
 
 export default function SponsorsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
-    <section className="relative py-32 md:py-40">
+    <section className="relative py-28 md:py-36">
       {/* Subtle top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
@@ -30,9 +31,9 @@ export default function SponsorsSection() {
               delay: 0.1,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-[10px] md:text-xs tracking-[0.35em] text-text-muted uppercase mb-6"
+            className="text-[10px] md:text-xs tracking-[0.25em] text-text-muted uppercase mb-4"
           >
-            Our Sponsors
+            Partnerships & Ecosystem
           </motion.p>
 
           <motion.h2
@@ -43,13 +44,13 @@ export default function SponsorsSection() {
               delay: 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-text-primary"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-normal text-text-primary"
           >
-            Backed by the best.
+            Backed by technology leaders.
           </motion.h2>
         </div>
 
-        {/* Sponsor logos grid */}
+        {/* Sponsor/Partner Badges Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -58,15 +59,18 @@ export default function SponsorsSection() {
             delay: 0.4,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16"
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8"
         >
-          {placeholderSponsors.map((sponsor) => (
+          {techPartners.map((partner) => (
             <div
-              key={sponsor.id}
-              className="flex items-center justify-center w-24 h-12 md:w-32 md:h-14 rounded-md border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.1] hover:bg-white/[0.04] transition-all duration-400"
+              key={partner.id}
+              className="flex flex-col items-center justify-center px-6 py-4 rounded-xl border border-white/[0.08] bg-[#111111]/80 hover:border-white/25 hover:bg-[#151515] transition-all duration-300 min-w-[140px] sm:min-w-[160px]"
             >
-              <span className="text-[10px] md:text-xs tracking-[0.1em] text-text-muted select-none">
-                {sponsor.name}
+              <span className="text-sm font-semibold tracking-wide text-text-primary mb-1">
+                {partner.name}
+              </span>
+              <span className="text-[10px] tracking-wider text-text-muted uppercase">
+                {partner.category}
               </span>
             </div>
           ))}
@@ -76,18 +80,17 @@ export default function SponsorsSection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-10 text-center text-[10px] md:text-xs text-text-muted tracking-wide"
+          className="mt-12 text-center text-xs text-text-muted tracking-wide"
         >
-          Interested in sponsoring AMBIORA?{" "}
-          <a
-            href="/contact"
-            className="text-text-secondary hover:text-text-primary transition-colors duration-300 underline underline-offset-2"
+          Interested in supporting the next generation of engineers?{" "}
+          <Link
+            href="/sponsors"
+            className="text-text-primary hover:text-white transition-colors duration-300 underline underline-offset-4 font-medium"
           >
-            Get in touch
-          </a>
+            Explore partnership tiers
+          </Link>
         </motion.p>
       </div>
     </section>
   );
 }
-

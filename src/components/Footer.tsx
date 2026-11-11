@@ -44,6 +44,7 @@ export default function Footer() {
                   src="/images/ambiora-logo-transparent.png"
                   alt="AMBIORA"
                   fill
+                  sizes="28px"
                   className="object-contain"
                 />
               </div>

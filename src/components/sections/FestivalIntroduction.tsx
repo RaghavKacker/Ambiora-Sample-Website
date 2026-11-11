@@ -20,7 +20,7 @@ export default function FestivalIntroduction() {
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[10px] md:text-xs tracking-[0.35em] text-text-muted uppercase mb-8"
+          className="text-[10px] md:text-xs tracking-[0.25em] text-text-muted uppercase mb-6"
         >
           About the Festival
         </motion.p>
@@ -29,7 +29,7 @@ export default function FestivalIntroduction() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-text-primary leading-tight"
+          className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-normal text-text-primary leading-tight"
         >
           Where technology meets
           <br />
@@ -53,7 +53,7 @@ export default function FestivalIntroduction() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 md:mt-16 grid grid-cols-3 gap-8 max-w-md mx-auto"
+          className="mt-14 md:mt-16 grid grid-cols-3 gap-6 sm:gap-8 max-w-md mx-auto"
         >
           {[
             { value: "20+", label: "Events" },
@@ -61,10 +61,10 @@ export default function FestivalIntroduction() {
             { value: "2K+", label: "Participants" },
           ].map((stat) => (
             <div key={stat.label}>
-              <p className="text-xl md:text-2xl font-semibold text-text-primary tracking-tight">
+              <p className="text-xl md:text-2xl font-semibold text-text-primary tracking-normal">
                 {stat.value}
               </p>
-              <p className="mt-1 text-[10px] md:text-xs tracking-[0.15em] text-text-muted uppercase">
+              <p className="mt-1 text-[10px] md:text-xs tracking-[0.15em] text-text-muted uppercase font-medium">
                 {stat.label}
               </p>
             </div>

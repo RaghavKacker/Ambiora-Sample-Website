@@ -59,6 +59,7 @@ export default function Navbar() {
                   src="/images/ambiora-logo-transparent.png"
                   alt="AMBIORA"
                   fill
+                  sizes="36px"
                   className="object-contain brightness-100 group-hover:brightness-125 transition-all duration-300"
                   priority
                 />
