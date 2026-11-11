@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo, useEffect, useState, useCallback } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import * as THREE from "three";
@@ -85,6 +85,7 @@ function ResponsiveOrbitalCamera({ onScaleChange }: { onScaleChange: (scale: num
 
     const persCamera = camera as THREE.PerspectiveCamera;
 
+    /* eslint-disable react-hooks/immutability */
     if (isMobile) {
       persCamera.fov = 52;
       persCamera.position.set(0, 1.2, 8.8);
@@ -101,6 +102,7 @@ function ResponsiveOrbitalCamera({ onScaleChange }: { onScaleChange: (scale: num
 
     persCamera.lookAt(0, 0, 0);
     persCamera.updateProjectionMatrix();
+    /* eslint-enable react-hooks/immutability */
   }, [camera, size, onScaleChange]);
 
   return null;
@@ -110,11 +112,11 @@ function ResponsiveOrbitalCamera({ onScaleChange }: { onScaleChange: (scale: num
 function OrbitalLighting() {
   return (
     <>
-      <ambientLight intensity={0.2} />
-      <directionalLight position={[6, 8, 6]} intensity={0.7} color="#ffffff" />
-      <directionalLight position={[-6, -4, -4]} intensity={0.3} color="#cccccc" />
-      <pointLight position={[0, 0, 4]} intensity={0.5} distance={12} color="#ffffff" />
-      <pointLight position={[0, -2, -3]} intensity={0.25} distance={8} color="#999999" />
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[6, 8, 6]} intensity={1.2} color="#ffffff" />
+      <directionalLight position={[-6, -3, 5]} intensity={0.6} color="#dbeafe" />
+      <pointLight position={[0, 1.5, 5.5]} intensity={1.5} distance={16} color="#ffffff" />
+      <pointLight position={[0, -2, -3]} intensity={0.5} distance={10} color="#999999" />
     </>
   );
 }
@@ -127,11 +129,11 @@ export default function OrbitalScene({
   onSelectEvent,
   reducedMotion = false,
 }: OrbitalSceneProps) {
-  const scaleMultiplierRef = useRef(1.0);
+  const [scaleMultiplier, setScaleMultiplier] = useState(1.0);
 
-  const handleScaleChange = (scale: number) => {
-    scaleMultiplierRef.current = scale;
-  };
+  const handleScaleChange = useCallback((scale: number) => {
+    setScaleMultiplier(scale);
+  }, []);
 
   const isAnyHovered = !!hoveredEventId || !!selectedEventId;
 
@@ -148,7 +150,7 @@ export default function OrbitalScene({
       {AMBIORA_EVENTS.map((event) => (
         <OrbitalPath
           key={`path-${event.id}`}
-          radius={event.orbit.radius * scaleMultiplierRef.current}
+          radius={event.orbit.radius * scaleMultiplier}
           tilt={event.orbit.tilt}
           isHighlighted={hoveredEventId === event.id || selectedEventId === event.id}
           isAnyHighlighted={isAnyHovered}
@@ -160,7 +162,7 @@ export default function OrbitalScene({
         <OrbitingPlanetNode
           key={`planet-${event.id}`}
           event={event}
-          scaleMultiplier={scaleMultiplierRef.current}
+          scaleMultiplier={scaleMultiplier}
           isHovered={hoveredEventId === event.id}
           isSelected={selectedEventId === event.id}
           isAnyHovered={isAnyHovered}

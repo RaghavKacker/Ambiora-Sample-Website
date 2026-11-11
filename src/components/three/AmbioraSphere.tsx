@@ -27,25 +27,43 @@ function StaticOrbitalFallback({
         <div className="absolute inset-12 rounded-full border border-white/[0.05]" />
         <div className="absolute inset-20 rounded-full border border-white/[0.04]" />
 
-        {/* Central A Symbol */}
-        <svg
-          viewBox="0 0 200 200"
-          className="w-28 h-28 relative z-10"
-          fill="none"
-          stroke="white"
-          strokeWidth="1.5"
-          opacity="0.85"
-        >
-          <circle cx="100" cy="100" r="80" strokeOpacity="0.2" />
-          <polygon points="100,45 60,125 140,125" fill="none" strokeOpacity="0.8" />
-          <polygon points="100,58 68,118 132,118" fill="none" strokeOpacity="0.4" />
-          <line x1="100" y1="45" x2="100" y2="20" strokeOpacity="0.6" />
-          <line x1="60" y1="125" x2="35" y2="150" strokeOpacity="0.6" />
-          <line x1="140" y1="125" x2="165" y2="115" strokeOpacity="0.6" />
-          <circle cx="100" cy="20" r="3.5" fill="none" strokeOpacity="0.8" />
-          <circle cx="35" cy="150" r="3.5" fill="none" strokeOpacity="0.8" />
-          <circle cx="165" cy="115" r="3.5" fill="none" strokeOpacity="0.8" />
-        </svg>
+        {/* Central A Symbol matching official AMBIORA Logo */}
+        <div className="relative w-32 h-32 z-10 flex items-center justify-center">
+          <svg
+            viewBox="0 0 200 200"
+            className="w-full h-full"
+            fill="none"
+            stroke="white"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {/* Outer Circular Boundary */}
+            <circle cx="100" cy="100" r="90" strokeOpacity="0.85" strokeWidth="2.5" />
+            
+            {/* Equilateral Triangle and Extended Arms */}
+            {/* Top Node to Bottom Right */}
+            <line x1="83" y1="32" x2="135" y2="121" strokeOpacity="0.9" />
+            {/* Bottom Right to Right Node */}
+            <line x1="135" y1="121" x2="167" y2="121" strokeOpacity="0.9" />
+            {/* Base of Triangle */}
+            <line x1="135" y1="121" x2="65" y2="121" strokeOpacity="0.9" />
+            {/* Bottom Left to Bottom Left Node */}
+            <line x1="65" y1="121" x2="50" y2="148" strokeOpacity="0.9" />
+            {/* Left Leg of Triangle */}
+            <line x1="65" y1="121" x2="100" y2="61" strokeOpacity="0.9" />
+
+            {/* Inner A crossbar and accents */}
+            <line x1="82" y1="110" x2="122" y2="110" strokeOpacity="0.6" strokeWidth="1.8" />
+            <line x1="100" y1="74" x2="122" y2="110" strokeOpacity="0.6" strokeWidth="1.8" />
+            <line x1="100" y1="74" x2="82" y2="110" strokeOpacity="0.6" strokeWidth="1.8" />
+
+            {/* Three Terminal Nodes */}
+            <circle cx="83" cy="32" r="6" fill="#111111" stroke="white" strokeWidth="2.5" />
+            <circle cx="50" cy="148" r="6" fill="#111111" stroke="white" strokeWidth="2.5" />
+            <circle cx="167" cy="121" r="6" fill="#111111" stroke="white" strokeWidth="2.5" />
+          </svg>
+        </div>
 
         {/* 5 Event Nodes around the circle */}
         {AMBIORA_EVENTS.map((event, i) => {
@@ -79,20 +97,22 @@ export default function AmbioraSphere({
   onHoverEvent = () => {},
   onSelectEvent = () => {},
 }: AmbioraSphereProps) {
-  const [canRender3D, setCanRender3D] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
+  const [canRender3D] = useState(() => {
+    if (typeof window === "undefined") return false;
     try {
       const canvas = document.createElement("canvas");
-      const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
-      setCanRender3D(!!gl);
+      return !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
     } catch {
-      setCanRender3D(false);
+      return false;
     }
+  });
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
 
+  useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
