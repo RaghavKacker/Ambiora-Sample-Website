@@ -54,7 +54,7 @@ export default function EventsDiscovery() {
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg md:text-xl text-text-secondary max-w-xl mx-auto leading-relaxed"
         >
-          Five experiences. Different challenges. One festival.
+          Thirteen flagship experiences. Five specialized arenas. One festival.
         </motion.p>
       </div>
 

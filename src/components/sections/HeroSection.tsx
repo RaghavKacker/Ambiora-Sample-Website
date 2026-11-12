@@ -112,7 +112,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.65 }}
-        className="relative z-20 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-full sm:max-w-2xl mx-auto px-3 mt-1 mb-2"
+        className="relative z-20 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-full sm:max-w-3xl mx-auto px-3 mt-1 mb-2"
       >
         {AMBIORA_EVENTS.map((event) => {
           const isActive = (hoveredEventId || selectedEventId) === event.id;

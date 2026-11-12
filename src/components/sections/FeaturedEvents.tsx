@@ -121,7 +121,7 @@ export default function FeaturedEvents() {
             href="/events"
             className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-semibold tracking-wider uppercase border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 active:scale-95"
           >
-            <span>Explore All 5 Flagship Arenas</span>
+            <span>Explore All 13 Flagship Arenas</span>
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

@@ -1,23 +1,23 @@
 import type { MetadataRoute } from "next";
+import { AMBIORA_EVENTS } from "@/data/events";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://ambiora.nmims.edu";
 
-  const staticRoutes = [
+  const coreRoutes = [
     "",
     "/events",
     "/schedule",
     "/about",
     "/sponsors",
     "/contact",
-    "/events/handoff",
-    "/events/trade-rush",
-    "/events/drone-o-mania",
-    "/events/prompt-wars",
-    "/events/case-exe",
   ];
 
-  return staticRoutes.map((route) => ({
+  const eventRoutes = AMBIORA_EVENTS.map((e) => e.route);
+
+  const allRoutes = [...coreRoutes, ...eventRoutes];
+
+  return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
