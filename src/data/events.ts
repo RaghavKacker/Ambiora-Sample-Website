@@ -78,6 +78,7 @@ export interface AmbioraEvent {
   minTeamMembers: number;
   maxTeamMembers: number;
   metrics: { label: string; value: string }[];
+  isFlagship?: boolean;
   caseSpecialData?: CaseSpecialData;
   orbit: {
     radius: number;
@@ -161,6 +162,7 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
       { label: "Architecture", value: "Modular" },
       { label: "Constraints", value: "Strict Sandboxing" },
     ],
+    isFlagship: true,
     orbit: {
       radius: 2.25,
       speed: 0.24,
@@ -235,6 +237,7 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
       { label: "Execution Model", value: "Simulated Exchange" },
       { label: "Dynamics", value: "Extreme Volatility" },
     ],
+    isFlagship: true,
     orbit: {
       radius: 2.8,
       speed: -0.19,
@@ -309,6 +312,7 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
       { label: "Course Arena", value: "Geometric Obstacles" },
       { label: "Control Mode", value: "Manual & Auto" },
     ],
+    isFlagship: true,
     orbit: {
       radius: 3.4,
       speed: 0.16,
@@ -383,6 +387,7 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
       { label: "Synthesis", value: "Multi-Modal" },
       { label: "Latent Depth", value: "Unrestricted" },
     ],
+    isFlagship: true,
     orbit: {
       radius: 3.95,
       speed: -0.13,
@@ -597,12 +602,628 @@ export const AMBIORA_EVENTS: AmbioraEvent[] = [
         },
       ],
     },
+    isFlagship: true,
     orbit: {
       radius: 4.55,
       speed: 0.1,
       initialAngle: 1.2,
       tilt: [0.35, 0.12, 0.16],
       size: 0.26,
+    },
+    visualTheme: "case-exe",
+  },
+
+  {
+    id: "cyberstrike",
+    slug: "cyberstrike",
+    name: "CYBERSTRIKE",
+    category: "CYBERSECURITY & CTF",
+    filterCategory: "Technology",
+    index: "06",
+    tagline: "Adversarial network intrusion, defensive hardening & binary exploit triage",
+    description:
+      "An elite capture-the-flag cyber combat arena. Security analysts penetrate hardened sandboxes, reverse-engineer zero-day binaries, and defend critical virtualized infrastructure under active attack vectors.",
+    route: "/events/cyberstrike",
+    image: "/events/cyberstrike.jpg",
+    imageAlt: "Server rack illuminated in cybernetic blue and green telemetry lights inside a secure datacenter",
+    imageSource: "Unsplash - Markus Spiske (Datacenter telemetry & security)",
+    datePlaceholder: "Day 2 · 09:30 AM",
+    teamSizePlaceholder: "Team of 2-4",
+    accentSnippet: "exploit://pwn --sandbox=isolated --target=target.sec",
+    duration: "6 Hours Non-Stop",
+    eligibility:
+      "Open to enrolled undergraduate and graduate students with demonstrated interest in network security, binary exploitation, and reverse engineering.",
+    requirements: [
+      "Personal development laptop running Kali Linux, Parrot OS, or Linux VM",
+      "Network analysis toolset: Wireshark, Nmap, Burp Suite / OWASP ZAP",
+      "Reverse engineering toolset: Ghidra, radare2, or IDA Free",
+      "Ethernet adapter capable of 1 Gbps wired LAN connectivity",
+    ],
+    aboutParagraphs: [
+      "In modern digital defense, passive firewalls are insufficient against state-grade persistent threats. True cyber resilience requires offensive instincts: understanding how exploits weaponize memory corruption, bypass kernel mitigations, and pivot through segmented subnets.",
+      "CYBERSTRIKE drops teams into an isolated hybrid enterprise infrastructure. Contestants balance offensive exploitation to capture opposing flags while patching their own vulnerable services against relentless adversarial probes.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Perimeter Reconnaissance",
+        description:
+          "Teams perform non-intrusive port sweeps, fingerprint custom service daemons, and map the subnet topology under strict detection limits.",
+      },
+      {
+        stage: "Stage 02",
+        title: "Web & Memory Exploitation",
+        description:
+          "Analyze custom vulnerable binaries, craft format-string and buffer overflow payloads, and bypass ASLR / DEP mitigations in designated sandboxes.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Privilege Escalation & Defense",
+        description:
+          "Elevate to root privileges, audit kernel permissions, harden defensive service scripts, and submit cryptographic flag hashes via secure socket.",
+      },
+      {
+        stage: "Stage 04",
+        title: "Post-Mortem Incident Briefing",
+        description:
+          "Top teams submit brief vulnerability disclosure reports outlining root causes, remediation diffs, and attack path diagrams.",
+      },
+    ],
+    rules: [
+      "All exploitation attempts must target designated competition subnets only.",
+      "Denial of service (DoS/DDoS) attacks against scoring servers will incur instant disqualification.",
+      "Sharing flags or exploit scripts between competing teams is strictly prohibited.",
+      "Scoring operates on dynamic flag decay: faster solvers receive maximum point yields.",
+      "Hardware tampering or sniffing physical infrastructure cables is forbidden.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: true,
+    minTeamMembers: 2,
+    maxTeamMembers: 4,
+    metrics: [
+      { label: "Challenge Nodes", value: "24 Targets" },
+      { label: "Network Architecture", value: "Air-Gapped VLAN" },
+      { label: "Scoring Model", value: "Dynamic Flag Decay" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 2.5,
+      speed: 0.22,
+      initialAngle: 1.8,
+      tilt: [-0.15, 0.2, 0.1],
+      size: 0.22,
+    },
+    visualTheme: "case-exe",
+  },
+  {
+    id: "algo-hack",
+    slug: "algo-hack",
+    name: "ALGO-HACK",
+    category: "COMPETITIVE ALGORITHMS",
+    filterCategory: "Technology",
+    index: "07",
+    tagline: "High-performance data structures, latency optimization & combinatorial complexity",
+    description:
+      "An asymptotic programming crucible. Contestants develop sub-millisecond solutions for NP-hard graphs, multi-dimensional dynamic programming, and streaming geometric queries under strict memory limits.",
+    route: "/events/algo-hack",
+    image: "/events/algo-hack.jpg",
+    imageAlt: "Computer monitor displaying optimized algorithmic source code in high-contrast syntax highlighting",
+    imageSource: "Unsplash - Fatos Bytyqi (Source code syntax on monitor)",
+    datePlaceholder: "Day 1 · 02:30 PM",
+    teamSizePlaceholder: "Individual or Duo",
+    accentSnippet: "opt://compile --O3 -std=c++20 --bench-latency",
+    duration: "3.5 Hours Sprint",
+    eligibility:
+      "Open to all university students with algorithmic problem-solving experience. Individual participation or two-person teams allowed.",
+    requirements: [
+      "Personal development machine with pre-installed compilers (GCC/Clang, JDK 21, Rust, or Python 3.12)",
+      "Offline standard library documentation",
+      "Pre-configured IDE or terminal text editor of choice (Vim, Neovim, VS Code)",
+    ],
+    aboutParagraphs: [
+      "Beyond standard software engineering lies the domain of pure algorithmic mastery: where standard quadratic solutions choke on million-node graphs and only O(N log N) or amortized constant-time structures survive.",
+      "ALGO-HACK challenges contestants with real-world asymptotic puzzles inspired by routing fabrics, compiler optimizers, and computational geometry. Each problem is evaluated against concealed test suites with rigorous CPU wall-clock and memory headroom limits.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Combinatorial Warmup",
+        description:
+          "Rapid-fire algorithmic sprint covering number theory, bit manipulation, and greedy scheduling to seed live leaderboard rankings.",
+      },
+      {
+        stage: "Stage 02",
+        title: "Complex Graphs & Trees",
+        description:
+          "Solve hard graph problems involving heavy-light decomposition, maximum network flow, and centroid trees within 90 minutes.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Real-Time Stress Judge",
+        description:
+          "Hidden worst-case pathological test suites stress memory boundaries and trigger timeouts for inefficient asymptotic implementations.",
+      },
+    ],
+    rules: [
+      "Access to external internet, AI assistants, and copied online templates is strictly blocked.",
+      "Solutions must compile without warnings under strict standard flags.",
+      "Memory limit per execution: 256 MB; CPU wall-clock limit: 1.0 second per test case.",
+      "Tie-breakers determined by earliest submission timestamp and cumulative penalty points.",
+      "Judges' automated test runner results are authoritative and final.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: false,
+    minTeamMembers: 1,
+    maxTeamMembers: 2,
+    metrics: [
+      { label: "Problem Headroom", value: "8 Rigorous Sets" },
+      { label: "Memory Limit", value: "256 MB Max" },
+      { label: "Execution Time", value: "1.0s / Case" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 3.1,
+      speed: -0.18,
+      initialAngle: 3.2,
+      tilt: [0.25, -0.1, 0.18],
+      size: 0.23,
+    },
+    visualTheme: "handoff",
+  },
+  {
+    id: "venture-matrix",
+    slug: "venture-matrix",
+    name: "VENTURE MATRIX",
+    category: "VENTURE ARCHITECTURE",
+    filterCategory: "Business",
+    index: "08",
+    tagline: "Venture capital simulations, cap-table dynamics & deeptech commercialization",
+    description:
+      "Founders and product strategists pitch disruptive technology architectures to simulated venture boards. Teams navigate seed-round dilution, market-clearing unit economics, and hostile boardroom scenarios.",
+    route: "/events/venture-matrix",
+    image: "/events/venture-matrix.jpg",
+    imageAlt: "Modern financial corporate skyscraper reaching into atmospheric clouds",
+    imageSource: "Unsplash - Sean Pollock (Architectural high-finance facade)",
+    datePlaceholder: "Day 2 · 02:00 PM",
+    teamSizePlaceholder: "Team of 2-3",
+    accentSnippet: "vc://evaluate --term-sheet --pre-money=8.5M",
+    duration: "4 Hours (Pitch & Deliberation)",
+    eligibility:
+      "Open to interdisciplinary student teams combining technical engineers and business/management strategists.",
+    requirements: [
+      "Investor Pitch Deck (PDF format, maximum 10 slides)",
+      "Financial model spreadsheet outlining 3-year burn rate, CAC, and LTV",
+      "Functional hardware prototype, interactive wireframe, or live software demo",
+    ],
+    aboutParagraphs: [
+      "Transforming breakthrough engineering into sustainable enterprise demands more than technical elegance. It requires sharp capital efficiency, defensible economic moats, and the conviction to navigate hostile investor due diligence.",
+      "VENTURE MATRIX places teams in front of seasoned venture capitalists and industry operators. Teams pitch original technology concepts, defend operational unit economics, and negotiate real-time term sheets while adapting to sudden simulated macroeconomic downturns.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Technical Deck Screening",
+        description:
+          "Venture evaluators review submitted slide decks and financial spreadsheets in a blind screening round.",
+      },
+      {
+        stage: "Stage 02",
+        title: "The 7-Minute Pitch",
+        description:
+          "Teams deliver an uninterrupted 7-minute executive pitch covering problem architecture, product demo, and commercial runway.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Boardroom Cross-Examination",
+        description:
+          "Intensive 10-minute partner Q&A testing customer acquisition economics, IP defensibility, and team cap-table retention.",
+      },
+      {
+        stage: "Stage 04",
+        title: "Term Sheet Negotiation",
+        description:
+          "Finalist teams receive competitive simulated term sheets and must negotiate protective provisions and valuation multiples live.",
+      },
+    ],
+    rules: [
+      "All pitched ventures must be original student-conceived concepts or research spin-outs.",
+      "Financial figures must be defensible; unsubstantiated market assertions will be penalized.",
+      "Strict 7-minute presentation cap enforced by automated countdown clock.",
+      "Every team member must participate verbally during either the pitch or due-diligence Q&A.",
+      "Judges evaluate teams across Product Innovation, Unit Economics, and Negotiation Agility.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: true,
+    minTeamMembers: 2,
+    maxTeamMembers: 3,
+    metrics: [
+      { label: "Pitch Format", value: "7 Min + 10 Min Q&A" },
+      { label: "Cap Structure", value: "Simulated $10M" },
+      { label: "Slide Cap", value: "10 Slides Max" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 3.65,
+      speed: 0.15,
+      initialAngle: 4.4,
+      tilt: [-0.28, 0.15, -0.2],
+      size: 0.24,
+    },
+    visualTheme: "trade-rush",
+  },
+  {
+    id: "robo-soccer",
+    slug: "robo-soccer",
+    name: "ROBO-SOCCER",
+    category: "MECHATRONIC COMBAT",
+    filterCategory: "Robotics",
+    index: "09",
+    tagline: "Kinematic micro-chassis engineering, high-torque propulsion & real-time telemetry",
+    description:
+      "High-speed collegiate robotic soccer arena. Custom-fabricated tele-operated and semi-autonomous rovers battle in an enclosed arena, executing drift maneuvers, defensive steals, and ball strikes.",
+    route: "/events/robo-soccer",
+    image: "/events/robo-soccer.jpg",
+    imageAlt: "Advanced mechanical robotics chassis with precision components and sensors",
+    imageSource: "Unsplash - Possessed Photography (High-precision robotics)",
+    datePlaceholder: "Day 2 · 11:00 AM",
+    teamSizePlaceholder: "Team of 3-5",
+    accentSnippet: "telemetry://dual-drive --rpm=12000 --pwm=98%",
+    duration: "Bracket Tournament (2 Days)",
+    eligibility:
+      "Open to collegiate robotics and mechanical engineering clubs with validated chassis designs.",
+    requirements: [
+      "Custom fabricated robotic chassis meeting dimensional limits (300 x 300 x 300 mm)",
+      "Chassis mass not exceeding 5.0 kg inclusive of batteries and drive motors",
+      "Radio communication operating on 2.4 GHz dual-frequency or Bluetooth low-energy protocol",
+      "LiPo safety charging bags and pit-stop servicing toolkit",
+    ],
+    aboutParagraphs: [
+      "Collegiate robotics reaches peak adrenaline in high-torque combat sport. In ROBO-SOCCER, agile dual-drive micro-rovers collide, sprint, and strike inside an enclosed high-traction arena designed to test structural durability and low-latency motor control.",
+      "Teams design custom power transmission systems, high-discharge battery circuitry, and omnidirectional steering geometries. Victory demands lightning operator reflexes, robust telemetry links, and rapid pit-lane repairs between high-intensity halves.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Technical Scrutineering",
+        description:
+          "Official dimension verification, weigh-in check, and battery voltage inspection in the inspection pit.",
+      },
+      {
+        stage: "Stage 02",
+        title: "Group Stage Round-Robin",
+        description:
+          "Teams compete in seeded group stages consisting of two 5-minute halves with a 2-minute tactical pit interval.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Elimination Bracket Gauntlet",
+        description:
+          "Single-elimination playoff brackets leading to the Grand Championship match under elevated arena lighting.",
+      },
+    ],
+    rules: [
+      "Robots must remain within 300 x 300 x 300 mm dimensions and 5.0 kg max weight at all times.",
+      "Intentional damaging attachments (spikes, high-voltage tasers, flames) are strictly banned.",
+      "Radio frequency jamming or unauthorized spectrum interference causes immediate disqualification.",
+      "A robot disabled on field has 60 seconds of pit-lane recovery time before penalty forfeiture.",
+      "Referees uphold fair-play rules regarding out-of-bounds balls and goal creases.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: true,
+    minTeamMembers: 3,
+    maxTeamMembers: 5,
+    metrics: [
+      { label: "Chassis Limit", value: "5.0 kg Max" },
+      { label: "Match Structure", value: "Two 5-Min Halves" },
+      { label: "Transmission", value: "2.4 GHz Low-Latency" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 4.2,
+      speed: -0.12,
+      initialAngle: 0.9,
+      tilt: [0.18, 0.22, -0.15],
+      size: 0.25,
+    },
+    visualTheme: "drone-o-mania",
+  },
+  {
+    id: "aerodrift",
+    slug: "aerodrift",
+    name: "AERODRIFT",
+    category: "AUTONOMOUS VEHICLES",
+    filterCategory: "Robotics",
+    index: "10",
+    tagline: "LiDAR path-planning, PID speed control & autonomous obstacle traversal",
+    description:
+      "Autonomous terrestrial ground rovers tackle a variable-friction circuit. Systems must navigate chicanes, blind intersections, and dynamic obstacles using embedded sensor fusion without human intervention.",
+    route: "/events/aerodrift",
+    image: "/events/aerodrift.jpg",
+    imageAlt: "High-speed optical light trails and motion blur across a futuristic race surface",
+    imageSource: "Unsplash - Motion Blur (High-speed trajectory telemetry)",
+    datePlaceholder: "Day 3 · 10:00 AM",
+    teamSizePlaceholder: "Team of 2-4",
+    accentSnippet: "lidar://scan --fuse-imu --path-planning=hybrid-a*",
+    duration: "3 Rounds (Time-Trial & Obstacle)",
+    eligibility:
+      "Open to undergraduate and postgraduate teams specializing in autonomous systems, embedded electronics, and sensor fusion.",
+    requirements: [
+      "Autonomous rover with embedded computing board (Raspberry Pi, ESP32, Teensy, or NVIDIA Jetson)",
+      "Sensor payload: Optical camera, Time-of-Flight (ToF), ultrasonic, or 2D LiDAR",
+      "Self-contained battery power system with emergency hardware kill switch",
+    ],
+    aboutParagraphs: [
+      "Autonomous ground vehicles operate on the bleeding edge of real-time control theory. When a rover enters an unmapped chicane at high speed, there is no human operator in the loop: microcontrollers must compute motor PWM values in milliseconds based on noisy sensor feeds.",
+      "AERODRIFT evaluates autonomous rovers across clean trajectory optimization and unpredictable dynamic hazard evasion. Teams must tune robust PID control loops, implement Kalman filtering across inertial measurement sensors, and execute real-time path planning.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Solo Time Trial Sprint",
+        description:
+          "Autonomous lap around a known geometric track measuring pure trajectory planning and cornering velocity.",
+      },
+      {
+        stage: "Stage 02",
+        title: "Dynamic Hazard Injection",
+        description:
+          "Pop-up track barriers and simulated pedestrians test emergency braking and real-time path re-planning.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Variable Friction Grand Prix",
+        description:
+          "Sudden transitions between acrylic, rubberized track, and low-friction slick surfaces test traction control algorithms.",
+      },
+    ],
+    rules: [
+      "Vehicles must be 100% autonomous; zero wireless control or teleoperation is permitted on track.",
+      "Rovers must possess an accessible physical mechanical emergency stop button on the chassis.",
+      "Track boundary transgressions incur a 5-second penalty added to the final lap clock.",
+      "Maximum vehicle width: 250 mm; maximum length: 350 mm.",
+      "Fastest aggregate clean lap time wins the championship trophy.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: true,
+    minTeamMembers: 2,
+    maxTeamMembers: 4,
+    metrics: [
+      { label: "Autonomy Level", value: "100% On-Board" },
+      { label: "Control Loop", value: "Sub-5ms PID" },
+      { label: "Circuit Distance", value: "45m Track" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 4.8,
+      speed: 0.11,
+      initialAngle: 2.7,
+      tilt: [-0.2, -0.18, 0.25],
+      size: 0.23,
+    },
+    visualTheme: "drone-o-mania",
+  },
+  {
+    id: "neural-forge",
+    slug: "neural-forge",
+    name: "NEURAL FORGE",
+    category: "AGENTIC ARCHITECTURES",
+    filterCategory: "Artificial Intelligence",
+    index: "11",
+    tagline: "Autonomous multi-agent swarms, RAG pipelines & fine-tuning benchmarks",
+    description:
+      "Build production-grade AI agent systems and autonomous reasoning loops. Teams architect multi-step autonomous toolchains, vector knowledge graphs, and evaluate models against ambiguous benchmark environments.",
+    route: "/events/neural-forge",
+    image: "/events/neural-forge.jpg",
+    imageAlt: "Abstract rendering of artificial neural networks and interconnected cognitive synaptic nodes",
+    imageSource: "Unsplash - DeepMind (Abstract neural network architecture)",
+    datePlaceholder: "Day 1 · 11:30 AM",
+    teamSizePlaceholder: "Team of 2-4",
+    accentSnippet: "agent://spawn --tools=vector,compiler --eval=bench-v2",
+    duration: "5 Hours Build & Benchmark",
+    eligibility:
+      "Open to university students with experience in Python, Large Language Models, agentic frameworks, and vector retrieval.",
+    requirements: [
+      "Laptop with Python 3.10+ development environment",
+      "Familiarity with agentic toolchains (LangGraph, CrewAI, AutoGen, or custom agent loops)",
+      "Git client and containerization environment (Docker / Podman recommended)",
+    ],
+    aboutParagraphs: [
+      "The paradigm of artificial intelligence has shifted from static prompt engineering to multi-agent autonomous reasoning. High-leverage systems now deploy swarms of specialized agents that collaborate, write and execute code, and self-correct across complex workflows.",
+      "NEURAL FORGE is a rigorous hackathon for agentic intelligence. Teams are tasked with building autonomous agent pipelines that resolve ambiguous, multi-step enterprise problems under strict token efficiency and ground-truth verification standards.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Benchmark Specification Release",
+        description:
+          "Organizers reveal the target problem domains, API endpoints, and evaluation metrics at the start line.",
+      },
+      {
+        stage: "Stage 02",
+        title: "Agent Architecture & Tool Binding",
+        description:
+          "Teams author reasoning loops, configure vector retrieval indices, and bind custom executable tools.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Automated Benchmark Gauntlet",
+        description:
+          "Submissions are evaluated against hidden test suites testing zero-shot generalization, cost-efficiency, and accuracy.",
+      },
+    ],
+    rules: [
+      "Agent execution must be fully automated without human intervention during benchmark evaluation.",
+      "Total API inference expenditure is capped per team to ensure architectural efficiency.",
+      "Hallucinated outputs and unhandled execution crashes result in severe scoring deductions.",
+      "All code and agent schemas must be committed to the official evaluation repository.",
+      "Top solutions are judged on task success rate, execution latency, and token parsimony.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: true,
+    minTeamMembers: 2,
+    maxTeamMembers: 4,
+    metrics: [
+      { label: "Agent Coordination", value: "Multi-Agent Swarm" },
+      { label: "Inference Latency", value: "<400ms Step" },
+      { label: "Benchmark Suite", value: "Hidden Real-World" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 2.6,
+      speed: -0.21,
+      initialAngle: 5.1,
+      tilt: [0.3, 0.1, -0.1],
+      size: 0.24,
+    },
+    visualTheme: "prompt-wars",
+  },
+  {
+    id: "vision-x",
+    slug: "vision-x",
+    name: "VISION-X",
+    category: "SPATIAL COMPUTING",
+    filterCategory: "Artificial Intelligence",
+    index: "12",
+    tagline: "Edge computer vision, spatial geometry & object tracking neural networks",
+    description:
+      "Deploy high-speed computer vision pipelines on edge silicon. Teams engineer models capable of multi-stream object classification, 3D point-cloud reconstruction, and spatial gesture tracking in real time.",
+    route: "/events/vision-x",
+    image: "/events/vision-x.jpg",
+    imageAlt: "Precision optical laboratory lens tracking laser grid patterns across spatial coordinate planes",
+    imageSource: "Unsplash - Optical Labs (High-precision spatial imaging)",
+    datePlaceholder: "Day 2 · 03:30 PM",
+    teamSizePlaceholder: "Team of 2-3",
+    accentSnippet: "cv://infer --fps=60 --tensorrt --quantize=int8",
+    duration: "4 Hours Real-Time Inference",
+    eligibility:
+      "Open to university students with experience in computer vision, deep learning frameworks, and edge acceleration.",
+    requirements: [
+      "Laptop or edge accelerator board (NVIDIA Jetson, Raspberry Pi with Coral TPU, or GPU laptop)",
+      "OpenCV, PyTorch / TensorRT / OpenVINO / ONNX Runtime runtime stack",
+      "Standard USB 1080p webcam or depth camera module",
+    ],
+    aboutParagraphs: [
+      "Computer vision is transforming robotics, autonomous transport, and mixed reality. However, running multi-gigabyte models in high-power datacenters is simple; the true engineering frontier is executing high-accuracy inference at 60 FPS on power-constrained edge silicon.",
+      "VISION-X challenges developers to squeeze maximum throughput and spatial precision from embedded neural vision pipelines. Teams optimize weight quantization, prune redundant convolutional channels, and deploy live tracking under adversarial lighting.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Model Quantization & Pruning",
+        description:
+          "Convert baseline vision models to INT8 / FP16 representations and tune hardware inference engines.",
+      },
+      {
+        stage: "Stage 02",
+        title: "Multi-Stream Spatial Tracking",
+        description:
+          "Deploy real-time pipelines to track multiple dynamic objects and reconstruct 3D coordinate trajectories.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Adversarial Occlusion Arena",
+        description:
+          "Models are tested against flickering lighting, motion blur, and severe camera occlusions in live testing.",
+      },
+    ],
+    rules: [
+      "Models must execute on designated hardware platforms within a 15-Watt thermal envelope.",
+      "Minimum required output throughput: 30 FPS at 720p resolution.",
+      "Evaluation criteria: mean Average Precision (mAP) divided by normalized milliwatt-hour consumption.",
+      "Pre-trained weights may be used but must be pruned or fine-tuned during the competition window.",
+      "Judges' automated metric harness determines final ranking.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: true,
+    minTeamMembers: 2,
+    maxTeamMembers: 3,
+    metrics: [
+      { label: "Target Frame Rate", value: "60 FPS Edge" },
+      { label: "Power Ceiling", value: "15W Thermal Envelope" },
+      { label: "Precision Metric", value: "mAP @ IoU 0.5:0.95" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 3.3,
+      speed: 0.17,
+      initialAngle: 1.5,
+      tilt: [-0.18, -0.22, 0.12],
+      size: 0.23,
+    },
+    visualTheme: "prompt-wars",
+  },
+  {
+    id: "cipher-protocol",
+    slug: "cipher-protocol",
+    name: "CIPHER PROTOCOL",
+    category: "CRYPTANALYSIS & CIPHERS",
+    filterCategory: "Mystery & Logic",
+    index: "13",
+    tagline: "Cryptanalytic frequency analysis, lattice cryptography & steganographic recovery",
+    description:
+      "An esoteric mathematical decryption labyrinth. Teams unravel multi-layered ciphertext, reconstruct broken rotor machine ciphers, and decode hidden steganographic payloads across historic and post-quantum keys.",
+    route: "/events/cipher-protocol",
+    image: "/events/cipher-protocol.jpg",
+    imageAlt: "Complex mathematical encryption formula patterns and cryptographic matrix grids",
+    imageSource: "Unsplash - Roman Mager (Mathematical cryptographic matrix)",
+    datePlaceholder: "Day 3 · 02:00 PM",
+    teamSizePlaceholder: "Team of 2-3",
+    accentSnippet: "decrypt://lattice --modulus=q --recover-private-key",
+    duration: "4 Hours Enigma Sprint",
+    eligibility:
+      "Open to all university students with passion for discrete mathematics, number theory, and logical puzzle solving.",
+    requirements: [
+      "Laptops equipped with Python 3, SageMath, or chosen mathematical script environments",
+      "Offline reference materials (cryptography handbooks, character encoding tables)",
+      "Scratch pads and pencils for manual algorithmic derivation",
+    ],
+    aboutParagraphs: [
+      "Cryptography is the ultimate battleground of pure logic and mathematical symmetry. From the mechanical rotor wheels of the early twentieth century to post-quantum lattice constructions, secrets are guarded by the computational hardness of mathematical problems.",
+      "CIPHER PROTOCOL is an elite mind sport for cryptanalysts. Teams face progressive tiers of encrypted challenges: statistical frequency anomalies, broken pseudo-random generators, hidden steganographic image bytes, and zero-knowledge proofs.",
+    ],
+    howItWorks: [
+      {
+        stage: "Stage 01",
+        title: "Classical & Polyalphabetic Triage",
+        description:
+          "Break complex substitution ciphers, mechanical rotor scrambles, and statistical frequency puzzles.",
+      },
+      {
+        stage: "Stage 02",
+        title: "Steganography & Deep Carving",
+        description:
+          "Extract payload archives embedded inside audio frequency spectrograms and uncompressed raw bitplanes.",
+      },
+      {
+        stage: "Stage 03",
+        title: "Post-Quantum & Lattice Gauntlet",
+        description:
+          "Exploit misconfigured modular lattices and weak cryptographic curves to recover private decryption keys.",
+      },
+    ],
+    rules: [
+      "Automated denial-of-service brute-force scripts against the answer portal are strictly prohibited.",
+      "Submissions require both the decrypted cleartext message and the mathematical derivation steps.",
+      "Communication or hint sharing between distinct teams will result in immediate disqualification.",
+      "Leaderboard updates are live until the final 30-minute blackout period.",
+      "Decisions of the Chief Cryptographer judge panel are indisputable.",
+    ],
+    prizePlaceholder: "To be announced · Phase 6 Disclosure",
+    isTeamEvent: true,
+    minTeamMembers: 2,
+    maxTeamMembers: 3,
+    metrics: [
+      { label: "Challenge Tiers", value: "7 Cryptographic Levels" },
+      { label: "Cipher Domains", value: "Classical to Post-Quantum" },
+      { label: "Verification", value: "Mathematical Proof" },
+    ],
+    isFlagship: false,
+    orbit: {
+      radius: 4.4,
+      speed: -0.14,
+      initialAngle: 3.8,
+      tilt: [0.22, -0.15, -0.22],
+      size: 0.25,
     },
     visualTheme: "case-exe",
   },
